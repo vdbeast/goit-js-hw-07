@@ -32,21 +32,7 @@ function initGallery(items) {
 
 initGallery(galleryItems);
 
-
-function openModal(event) {
-    event.preventDefault();
-
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-
-    const largeImageURL = event.target.dataset.source;
-
-    const instance = basicLightbox.create(
-    `<img src="${largeImageURL}" alt="${event.target.alt}" width="800" height="600">`
-  );
-
-    instance.show();
-}
-
-galleryEl.addEventListener('click', openModal);
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
